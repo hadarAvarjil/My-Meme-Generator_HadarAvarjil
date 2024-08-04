@@ -15,7 +15,7 @@ function renderMeme() {
     elImg.src = `img/meme-imgs(square)/${meme.selectedImgId}.jpg`
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, elImg.naturalWidth, elImg.naturalHeight)
-        drawText(`${meme.lines[0].txt}`, 250, 100, `${meme.lines[0].color}`,`${meme.lines[0].size}` )
+        drawText(`${meme.lines[0].txt}`, 250, 100, `${meme.lines[0].color}`,`${meme.lines[0].size}`, `${meme.lines[0].fillColor}` )
     }
 
     window.addEventListener('resize', resizeCanvas)
@@ -41,11 +41,12 @@ function resizeCanvas() {
     renderMeme()
 }
 
-function drawText(text, x, y, strokeColor, size) {
+function drawText(text, x, y, strokeColor, size, fillColor) {
     const fontSize = size
+
     gCtx.lineWidth = 2
     gCtx.strokeStyle = strokeColor
-    gCtx.fillStyle = 'black'
+    gCtx.fillStyle = fillColor
     gCtx.font = `${fontSize}px Arial`
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
@@ -74,7 +75,10 @@ function handleSubmit(event) {
 
 function onChangeStrokeColor(strokeColor) {
     setStrokeColor(strokeColor)
-    console.log(strokeColor);
+}
+
+function onChangeFillColor(fillColor){
+    setFillColor(fillColor)
 }
 
 function onFontdecreased(){

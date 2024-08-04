@@ -26,8 +26,8 @@ canvas {
 
 .editor-options-board-layout {
     display: grid;
-    grid-template-columns: repeat(5, 60px);
-    grid-template-rows: repeat(7, 50px);
+    grid-template-columns: repeat(5, 80px);
+    grid-template-rows: repeat(7, 80px);
     grid-template-areas:
         'R1 R1 R1 R1 R1'
         'R2C1 R2C2 R2C3 R2C4 R2C5'
@@ -44,7 +44,7 @@ canvas {
 .txt-input {
     grid-area: R1;
     width: 300px;
-    height: 50px;
+    height: 45px;
     border-radius: 10px;
     font-size: 1em;
     font-weight: 500;
@@ -63,6 +63,28 @@ canvas {
 .color-picker-container {
     grid-area: R4C4;
     position: relative;
+
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    height: 53px;
+    width: 53px;
+    background-color: rgb(5, 5, 5);
+
+    align-content: center;
+    justify-content: center;
+    justify-self: center;
+    padding: 8px;
+}
+
+.color-picker-container-fill{
+    grid-area: R4C5;
+    position: relative;
+    align-content: center;
+    justify-content: center;
+    justify-self: center;
+
+    padding: 12px;
 }
 
 .color-picker-input {
@@ -75,11 +97,28 @@ canvas {
     opacity: 0;
     cursor: pointer;
 }
-
+.color-picker-fill-input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
 .decrease{
     grid-area: R3C2;
 }
 
 .increase{
     grid-area: R3C1;
+}
+
+.font-edit-btn{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    height: 53px;
+    width: 53px;
+    background-color: white;
 }

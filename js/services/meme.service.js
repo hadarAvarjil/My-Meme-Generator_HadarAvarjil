@@ -10,7 +10,8 @@ let gMeme = {
         {
             txt: 'Add Text Here',
             size: 40,
-            color: 'black'
+            color: 'black',
+            fillColor: 'black'
         }
     ]
 }
@@ -29,6 +30,15 @@ function setStrokeColor(strokeColor) {
     gMeme.lines[0].color = strokeColor
     renderMeme()
 }
+
+
+function setFillColor(fillColor) {
+    gMeme.lines[0].fillColor = fillColor
+    renderMeme()
+}
+
+
+
 
 function setImg(imageID) {
     gMeme.selectedImgId = imageID
