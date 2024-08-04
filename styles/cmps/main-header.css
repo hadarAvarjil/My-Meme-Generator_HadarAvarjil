@@ -1,0 +1,12 @@
+.main-header {
+    background-color: var(--secondary-1);
+    height: 70px;
+}
+
+.main-header .logo {
+    font-family: changa, sans-serif;
+    color:  var(--primary-3);
+    font-size: 2.5em;
+}
+
+

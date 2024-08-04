@@ -1,0 +1,31 @@
+.search-bar-container {
+    background-color: var(--primary-3);
+    height: 100px;
+}
+
+.filter-bar {
+    outline: none;
+    border: none;
+    height: 28px;
+    border-bottom: 2px solid var(--primary-base1);
+    font-size: 1.2em;
+    font-family: alexandria, sans-serif;
+    font-weight: 600;
+}
+
+i{
+    border-bottom: 2px solid var(--primary-base1);
+    height: 28px;
+    margin: 0;
+}
+
+.filter-bar:focus{
+    border: none;
+    outline: none;
+    border-bottom: 2px solid var(--primary-base1);
+}
+.filter-bar:focus-visible{
+    border: none;
+    outline: none;
+    border-bottom: 2px solid var(--primary-base1);
+}

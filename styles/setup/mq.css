@@ -1,0 +1,124 @@
+@media (max-width:780px) {
+
+    .main-header .main-nav {
+        position: fixed;
+        top: 70px;
+        height: 70px;
+
+        transform: translateX(100%);
+        transition: transform .6s, box-shadow .6s;
+        background-color: var(--primary1);
+    }
+
+
+    .main-header .logo {
+        font-size: 2em;
+        padding: .5em;
+    }
+
+    .main-header .nav-bar {
+        flex-direction: column;
+    }
+
+    .main-header .nav-bar a {
+        display: flex;
+        width: 100vw;
+        height: 60px;
+        font-size: 1.4em;
+        background-color: var(--secondary-1);
+        align-items: center;
+        padding: .5em;
+    }
+
+    .btn-toggle-menu {
+        font-size: 2rem;
+        padding: 10px;
+        border: none;
+        background-color: inherit;
+        color: white;
+    }
+
+    .close-menu-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        font-size: 1.2rem;
+        padding: 10px;
+        border: none;
+        background-color: var(--primary-2);
+        color: white;
+    }
+
+    .close-menu-btn:hover {
+        color: var(--secondary);
+    }
+
+    body.menu-open .main-nav {
+        transform: translateX(0);
+    }
+
+    body.menu-open .main-screen {
+        background-color: rgba(0, 0, 0, 0.5);
+        pointer-events: auto;
+    }
+
+
+}
+
+@media (min-width:780px) {
+    .main-layout {
+        display: grid;
+        grid-template-columns:
+            minmax(20px, 1fr) minmax(auto, 800px) minmax(20px, 1fr);
+    }
+
+    .btn-toggle-menu {
+        display: none;
+    }
+
+    .close-menu-btn {
+        display: none;
+    }
+
+    .main-header a {
+        font-size: 1.4em;
+        width: 130px;
+        height: 130px;
+        padding-bottom: 0.9em;
+        transition: box-shadow 0.4s;
+
+    }
+
+    .main-header .nav-bar li:first-child {
+        padding-inline: 1.1em;
+        border-inline-end: 1px solid var(--primary-1);
+    }
+
+    .main-header .nav-bar li:nth-child(2) {
+        padding-left: 1.1em;
+    }
+
+
+    .main-header .nav-bar a:hover {
+        box-shadow: inset 0 -6px 0 var(--primary-base);
+        color: var(--primary-base);
+    }
+
+    .main-header .nav-bar a:active {
+        box-shadow: inset 0 -6px 0 var(--primary-base);
+        color: var(--primary-base);
+        cursor: default;
+    }
+
+}
+
+
+@media (min-width:1000px) {
+    .main-layout {
+        grid-template-columns:
+            minmax(auto, 50px) minmax(900px, 1fr) minmax(auto, 50px);
+    }
+
+
+}

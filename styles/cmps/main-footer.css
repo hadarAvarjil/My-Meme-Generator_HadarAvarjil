@@ -1,0 +1,24 @@
+.main-footer {
+    height: 211px;
+    background-color: var(--secondary-1);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-footer-inner{
+    flex-direction: column;
+}
+
+.main-footer .logo {
+    font-family: changa, sans-serif;
+    color:  var(--primary-3);
+    font-size: 2em;
+}
+
+
+.main-footer p {
+    font-family: alexandria-thin, sans-serif;
+    font-size: 1.2em;
+    color:  var(--primary-3);
+}

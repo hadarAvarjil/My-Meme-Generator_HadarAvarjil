@@ -1,0 +1,23 @@
+.gallery-main {
+    background-color: var(--primary-2);
+    
+}
+
+.grid-container {
+    display: grid;
+    justify-content: center;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, 300px);
+    grid-template-rows: repeat(3, 300px);
+    height: 50vh;
+    overflow: auto; 
+    /* width: fit-content; */
+    
+}
+
+img{
+    display: block;
+    max-width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
