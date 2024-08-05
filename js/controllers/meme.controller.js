@@ -2,38 +2,29 @@
 
 let gElCanvas
 let gCtx
+let gLineX = 250
+
 
 let gFontSizeDelta = 0
 
 function renderMeme() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-    // resizeCanvas()
 
     const meme = getMeme()
     const elImg = new Image()
+
     elImg.src = `img/meme-imgs(square)/${meme.selectedImgId}.jpg`
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, elImg.naturalWidth, elImg.naturalHeight)
-        drawText(`${meme.lines[0].txt}`, 250, 100, `${meme.lines[0].color}`,`${meme.lines[0].size}`, `${meme.lines[0].fillColor}` )
-    }
 
+        meme.lines.forEach((line, index) => {
+            drawText(line.txt, line.x, line.y, line.color, line.size, line.fillColor, index)
+        })
+        drawFrame()
+    }
     window.addEventListener('resize', resizeCanvas)
 }
-
-// let gMeme = {
-//     selectedImgId: 5,
-//     selectedLineIdx: 0,
-//     lines: [
-//         {
-//             txt: 'Add Text Here',
-//             size: 20,
-//             color: 'red'
-//         }
-//     ]
-// }
-
-
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
@@ -41,9 +32,8 @@ function resizeCanvas() {
     renderMeme()
 }
 
-function drawText(text, x, y, strokeColor, size, fillColor) {
+function drawText(text, x, y, strokeColor, size, fillColor, selectedLine) {
     const fontSize = size
-
     gCtx.lineWidth = 2
     gCtx.strokeStyle = strokeColor
     gCtx.fillStyle = fillColor
@@ -51,8 +41,13 @@ function drawText(text, x, y, strokeColor, size, fillColor) {
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
 
-    gCtx.fillText(text, x, y)
-    gCtx.strokeText(text, x, y)
+    gCtx.fillText(text, x, y, 400)
+    gCtx.strokeText(text, x, y, 400)
+
+    const textMetrics = gCtx.measureText(text)
+    const textWidth = textMetrics.width
+    gMeme.lines[selectedLine].textWidth = textWidth
+
 }
 
 function onSetLineTxt(txt) {
@@ -60,7 +55,7 @@ function onSetLineTxt(txt) {
 }
 
 function downloadImg(elLink) {
-    const imgContent = gElCanvas.toDataURL('image/jpeg') 
+    const imgContent = gElCanvas.toDataURL('image/jpeg')
     elLink.href = imgContent
 }
 
@@ -77,15 +72,61 @@ function onChangeStrokeColor(strokeColor) {
     setStrokeColor(strokeColor)
 }
 
-function onChangeFillColor(fillColor){
+function onChangeFillColor(fillColor) {
     setFillColor(fillColor)
 }
 
-function onFontdecreased(){
+function onFontdecreased() {
     setFontdecreased()
 }
 
-function onFontIncreased(){
+function onFontIncreased() {
     setFontIncreased()
 }
 
+function onAddLine() {
+    if (gMeme.LinesAddedCount === 3) return
+    addLine()
+    renderMeme()
+    setSelectedLine()
+}
+
+function onSwitchLine() {
+    if (gMeme.LinesAddedCount===0) return
+    switchLine()
+    drawFrame()
+}
+
+function drawFrame() {
+    const textHeight = 30;
+    const padding = 10
+
+
+    let selectedLineIdx = gMeme.selectedLineIdx
+    let x = gMeme.lines[selectedLineIdx].x
+    let y = gMeme.lines[selectedLineIdx].y
+    let textWidth = gMeme.lines[selectedLineIdx].textWidth
+
+    gCtx.strokeStyle = 'green'
+    gCtx.lineWidth = 2
+    gCtx.strokeRect(x - textWidth / 2 - padding, y - textHeight / 2 - padding, textWidth + padding * 2, textHeight + padding * 2)
+    renderMeme()
+}
+
+// gMeme = {
+//     selectedImgId: 5,
+//     selectedLineIdx: 0,
+//     LinesAddedCount: 0,
+//     lines: [
+//         {
+//             txt: 'Add Text Here',
+//             size: 40,
+//             color: 'black',
+//             fillColor: 'black',
+//             textWidth: 0,
+//             textHeight: 0,
+//             x: 250,
+//             y: 100,
+
+//         },
+//     ]

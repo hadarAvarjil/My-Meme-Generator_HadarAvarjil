@@ -55,6 +55,19 @@
                     <input class="txt-input" oninput="onSetLineTxt(this.value)" type="text" id="textInput"
                         name="textInput" placeholder="Add Text Here" />
 
+                    <button class="add edit-btn" onclick="onAddLine()"><img src="img/btn/add.png"
+                            alt="add edit-btn">
+                    </button>
+
+                    <button class="trash edit-btn" onclick="onFontdecreased()"><img src="img/btn/trash.png"
+                            alt="trash edit-btn">
+                    </button>
+
+                    <button class="up-and-down edit-btn" onclick="onSwitchLine()"><img
+                            src="img/btn/up-and-down-opposite.png" alt="up-and-down">
+                    </button>
+
+
 
                     <div class="color-picker-container">
                         <label for='color-picker'>
@@ -64,24 +77,25 @@
                             value="#0a0a0a" id="color-picker" />
                     </div>
 
-                    <div class="color-picker-container-fill font-edit-btn">
+                    <div class="color-picker-container-fill edit-btn">
                         <label for='color-picker-fill'>
-                            <img src="img/btn/paint-board-and-brus.png" onclick="onColorPicker()" alt="color-picker-fill">
+                            <img src="img/btn/paint-board-and-brus.png" onclick="onColorPicker()"
+                                alt="color-picker-fill">
                         </label>
                         <input onchange="onChangeFillColor(value)" class="color-picker-fill-input" type="color"
                             value="#0a0a0a" id="color-picker-fill" />
                     </div>
 
-                    <button class="decrease font-edit-btn" onclick="onFontdecreased()"><img
+                    <button class="edit-btn decrease " onclick="onFontdecreased()"><img
                             src="img/btn/decrease font - icon.png" alt="decrease font">
                     </button>
 
-                    <button class="increase font-edit-btn" onclick="onFontIncreased()"><img
+                    <button class="increase edit-btn" onclick="onFontIncreased()"><img
                             src="img/btn/increase font - icon.png" alt="decrease font">
                     </button>
 
 
-                    <a href="#" class="btn " onclick="downloadImg(this)" download="my-img.jpg">Download</a>
+                    <a href="#" class="download btn " onclick="downloadImg(this)" download="my-img.jpg">Download</a>
                 </div>
             </form>
         </div>
