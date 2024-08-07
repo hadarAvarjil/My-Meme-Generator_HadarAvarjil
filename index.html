@@ -33,10 +33,24 @@
 
     <section class="gallery">
         <div class="search-bar-container full flex align-center">
-            <input oninput="onSetFilterBy({ txtInput: this.value })" class="filter-bar" type="text" autofocus
+            <input list="keywords" class="filter-bar" name="keywords" id="keywords-word" autofocus
                 placeholder="Enter search keyword">
+
+            <datalist id="keywords">
+                <option value="funny"></option>
+                <option value="famous"></option>
+                <option value="happy"></option>
+                <option value="drinks"></option>
+                <option value="comics"></option>
+                <option value="awkward"></option>
+                <option value="dogs"></option>
+                <option value="cats"></option>
+            </datalist>
             <i class="fas fa-search search-icon"></i>
+
         </div>
+
+
 
         <div class="gallery-main ">
             <div class="grid-container">
@@ -46,7 +60,7 @@
 
     <section class="editor flex">
         <div class="canvas-container">
-            <canvas width="500" height="500"> </canvas>
+            <canvas width="400" height="400" onclick="onMouseClick(event)"> </canvas>
         </div>
 
         <div class="editor-options-board">
@@ -55,11 +69,10 @@
                     <input class="txt-input" oninput="onSetLineTxt(this.value)" type="text" id="textInput"
                         name="textInput" placeholder="Add Text Here" />
 
-                    <button class="add edit-btn" onclick="onAddLine()"><img src="img/btn/add.png"
-                            alt="add edit-btn">
+                    <button class="add edit-btn" onclick="onAddLine()"><img src="img/btn/add.png" alt="add edit-btn">
                     </button>
 
-                    <button class="trash edit-btn" onclick="onFontdecreased()"><img src="img/btn/trash.png"
+                    <button class="trash edit-btn" onclick="OnDeleteLine()"><img src="img/btn/trash.png"
                             alt="trash edit-btn">
                     </button>
 
@@ -67,14 +80,24 @@
                             src="img/btn/up-and-down-opposite.png" alt="up-and-down">
                     </button>
 
+                    <button class="align-to-left edit-btn" onclick="onAlignLine('right')"><img
+                            src="img/btn/align-to-left.png" alt="align-to-left">
+                    </button>
 
+                    <button class="center-text edit-btn" onclick="onAlignLine('center')"><img
+                            src="img/btn/center-text-alignmen.png" alt="center-text">
+                    </button>
+
+                    <button class="align-to-right edit-btn" onclick="onAlignLine('left')"><img
+                            src="img/btn/align-to-right.png" alt="align-to-right">
+                    </button>
 
                     <div class="color-picker-container">
                         <label for='color-picker'>
                             <img src="img/btn/A.png" onclick="onColorPicker()" alt="Color Picker">
                         </label>
                         <input onchange="onChangeStrokeColor(value)" class="color-picker-input" type="color"
-                            value="#0a0a0a" id="color-picker" />
+                            value="#000000" id="color-picker" name="color-picker" />
                     </div>
 
                     <div class="color-picker-container-fill edit-btn">
@@ -83,7 +106,7 @@
                                 alt="color-picker-fill">
                         </label>
                         <input onchange="onChangeFillColor(value)" class="color-picker-fill-input" type="color"
-                            value="#0a0a0a" id="color-picker-fill" />
+                            id="color-picker-fill" name="fill-color" value="#000000" />
                     </div>
 
                     <button class="edit-btn decrease " onclick="onFontdecreased()"><img
@@ -94,6 +117,13 @@
                             src="img/btn/increase font - icon.png" alt="decrease font">
                     </button>
 
+                    <select class="edit-btn font-type" onchange="onSelectFontType(value)">
+                        <option value='Impact'>Impact</option>
+                        <option value='Arial'>Arial</option>
+                        <option value='Verdana'>Verdana</option>
+                        <option value='Papyrus'>Papyrus</option>
+                        <option value='Georgia'>Georgia</option>
+                    </select>
 
                     <a href="#" class="download btn " onclick="downloadImg(this)" download="my-img.jpg">Download</a>
                 </div>

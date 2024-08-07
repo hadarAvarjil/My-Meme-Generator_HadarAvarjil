@@ -1,6 +1,6 @@
 'use strict'
 
-const FONT_MAX_SIZE = 55
+const FONT_MAX_SIZE = 50
 const FONT_MIN_SIZE = 10
 
 let gMeme = {
@@ -10,13 +10,15 @@ let gMeme = {
     lines: [
         {
             txt: 'Add Text Here',
-            size: 40,
-            color: 'black',
-            fillColor: 'black',
-            textWidth: 0,
-            textHeight: 0,
+            size: 35,
+            color: '#000000',
+            fillColor: '#000000',
+            textWidth: 325,
+            textHeight: 40,
+            textAlign: 'center',
             x: 250,
             y: 100,
+            font: 'Arial'
 
         },
     ]
@@ -25,19 +27,26 @@ let gMeme = {
 let gLineY = 250
 
 function addLine() {
+    if (gMeme.lines.length === 3) return
 
     const newLine = {
         txt: 'Add Text Here',
-        size: 40,
-        color: 'black',
-        fillColor: 'black',
+        size: 35,
+        color: '#000000',
+        fillColor: '#000000',
         textWidth: 0,
         textHeight: 0,
         x: 250,
         y: gLineY,
+        font: 'Arial'
     }
     gMeme.lines.push(newLine)
-    gLineY += 150
+    gLineY += 50
+    if (gLineY > 350) gLineY = 100
+
+    if (gMeme.LinesAddedCount === 2) return
+    gMeme.LinesAddedCount++
+    gMeme.selectedLineIdx++
 }
 
 function getMeme() {
@@ -92,24 +101,43 @@ function setFontIncreased() {
     renderMeme()
 }
 
-function setSelectedLine() {
-    if (gMeme.LinesAddedCount === 2) return
-    gMeme.LinesAddedCount++
-    gMeme.selectedLineIdx++
-}
 
 function switchLine() {
-    console.log(gMeme.LinesAddedCount);
-
     if (gMeme.LinesAddedCount === 1) {
         if (gMeme.selectedLineIdx === 1) gMeme.selectedLineIdx--
         else gMeme.selectedLineIdx = 1
+
     }
 
     if (gMeme.LinesAddedCount === 2) {
         if (gMeme.selectedLineIdx <= 2) gMeme.selectedLineIdx--
         if (gMeme.selectedLineIdx === -1) gMeme.selectedLineIdx = 2
     }
+    renderMeme()
+}
 
+function deleteLine() {
+    if (gMeme.LinesAddedCount < 1) return
+    const idx = gMeme.selectedLineIdx
+    gMeme.lines.splice(idx, 1)
+
+    gMeme.LinesAddedCount--
+    gMeme.selectedLineIdx = 0
+    renderMeme()
+}
+
+function alignLine(direction) {
+    const line = gMeme.selectedLineIdx
+    gMeme.lines[line].textAlign = direction
+    renderMeme()
+}
+
+function selectedLineByLineClick(clickedLine) {
+    gMeme.selectedLineIdx = clickedLine
+}
+
+function setFontType(font) {
+    const line = gMeme.selectedLineIdx
+    gMeme.lines[line].font = font
     renderMeme()
 }

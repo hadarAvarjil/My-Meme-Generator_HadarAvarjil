@@ -3,6 +3,11 @@
     height: 100px;
 }
 
+.filter-bar::after {
+    content: '';
+    position: relative;
+}
+
 .filter-bar {
     outline: none;
     border: none;
@@ -11,21 +16,29 @@
     font-size: 1.2em;
     font-family: alexandria, sans-serif;
     font-weight: 600;
+    appearance: none;
 }
 
-i{
+i {
     border-bottom: 2px solid var(--primary-base1);
     height: 28px;
     margin: 0;
 }
 
-.filter-bar:focus{
+.filter-bar:focus {
     border: none;
     outline: none;
     border-bottom: 2px solid var(--primary-base1);
+    appearance: none;
 }
-.filter-bar:focus-visible{
+
+.filter-bar:hover {
+    appearance: none;
+}
+
+.filter-bar:focus-visible {
     border: none;
     outline: none;
     border-bottom: 2px solid var(--primary-base1);
+    appearance: none;
 }

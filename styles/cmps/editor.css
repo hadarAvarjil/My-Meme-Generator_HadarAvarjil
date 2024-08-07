@@ -9,12 +9,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 100%;
-    object-fit: cover;
+    /* overflow: hidden; */
 }
 
 canvas {
-    object-fit: cover;
+    width: 100%;
+    display: block;
+    object-fit: contain;
+    padding-left: .8em;
 }
 
 .editor-options-board {
@@ -26,13 +28,13 @@ canvas {
 
 .editor-options-board-layout {
     display: grid;
-    grid-template-columns: repeat(5, 75px);
-    grid-template-rows: repeat(7, 75px);
+    grid-template-columns: repeat(5, 65px);
+    grid-template-rows: repeat(7, 65px);
     grid-template-areas:
         'R1 R1 R1 R1 R1'
-        '. R2C2 R2C3 R2C4 R2C5'
+        '. R2C2 R2C3 R2C4 .'
         'R3C1 R3C2 R3C3 R3C4 R3C5'
-        'R4C1 R4C2 R4C3 R4C4 R4C5'
+        'R4C1 R4C1 R4C3 R4C4 R4C5'
         'R5C1 R5C2 R5C3 R5C4 R5C5'
         'R6C1 R6C1 R6C3 R6C4 R6C5'
         'R6C1 R6C1 R7C3 R7C4 R7C5';
@@ -67,15 +69,15 @@ canvas {
     outline: none;
     border: none;
     border-radius: 5px;
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     background-color: rgb(5, 5, 5);
 
     align-content: center;
     justify-content: center;
     justify-self: center;
     margin: auto;
-    padding: 8px;
+    padding: 5px;
 }
 
 .color-picker-container:hover {
@@ -89,7 +91,7 @@ canvas {
     justify-content: center;
     justify-self: center;
 
-    padding: 12px;
+    padding-inline: 6px;
 }
 
 .color-picker-input {
@@ -126,8 +128,8 @@ canvas {
     outline: none;
     border: none;
     border-radius: 5px;
-    height: 53px;
-    width: 53px;
+    height: 40px;
+    width: 40px;
     background-color: white;
     margin: auto;
 }
@@ -161,3 +163,29 @@ canvas {
 .up-and-down {
     grid-area: R2C2;
 }
+
+.align-to-left {
+    grid-area: R3C3;
+}
+
+.align-to-right {
+    grid-area: R3C5;
+}
+
+.center-text {
+    grid-area: R3C4;
+}
+
+.font-type {
+    position: relative;
+    grid-area: R4C1;
+    height: 40px;
+    width: 105px;
+    font-size: 1.2em;
+    padding-inline: 5px;
+
+    align-content: center;
+    justify-content: center;
+    justify-self: center;
+}
+

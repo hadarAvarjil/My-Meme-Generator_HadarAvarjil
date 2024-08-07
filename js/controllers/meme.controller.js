@@ -19,7 +19,7 @@ function renderMeme() {
         gCtx.drawImage(elImg, 0, 0, elImg.naturalWidth, elImg.naturalHeight)
 
         meme.lines.forEach((line, index) => {
-            drawText(line.txt, line.x, line.y, line.color, line.size, line.fillColor, index)
+            drawText(line.txt, line.x, line.y, line.color, line.size, line.fillColor, index, line.textAlign, line.font)
         })
         drawFrame()
     }
@@ -32,13 +32,16 @@ function resizeCanvas() {
     renderMeme()
 }
 
-function drawText(text, x, y, strokeColor, size, fillColor, selectedLine) {
+function drawText(text, x, y, strokeColor, size, fillColor, selectedLine, textAlign, font) {
     const fontSize = size
-    gCtx.lineWidth = 2
+    const align = textAlign
+    const fontType = font
+
+    gCtx.lineWidth = 1
     gCtx.strokeStyle = strokeColor
     gCtx.fillStyle = fillColor
-    gCtx.font = `${fontSize}px Arial`
-    gCtx.textAlign = 'center'
+    gCtx.font = `${fontSize}px ${fontType}`
+    gCtx.textAlign = `${align}`
     gCtx.textBaseline = 'middle'
 
     gCtx.fillText(text, x, y, 400)
@@ -47,7 +50,6 @@ function drawText(text, x, y, strokeColor, size, fillColor, selectedLine) {
     const textMetrics = gCtx.measureText(text)
     const textWidth = textMetrics.width
     gMeme.lines[selectedLine].textWidth = textWidth
-
 }
 
 function onSetLineTxt(txt) {
@@ -59,10 +61,6 @@ function downloadImg(elLink) {
     elLink.href = imgContent
 }
 
-function onColorPicker() {
-    console.log('value');
-
-}
 
 function handleSubmit(event) {
     event.preventDefault()
@@ -88,45 +86,69 @@ function onAddLine() {
     if (gMeme.LinesAddedCount === 3) return
     addLine()
     renderMeme()
-    setSelectedLine()
+    inputFieldsDataFormUpdated()
 }
 
 function onSwitchLine() {
-    if (gMeme.LinesAddedCount===0) return
+    if (gMeme.LinesAddedCount === 0) return
     switchLine()
     drawFrame()
+    inputFieldsDataFormUpdated()
 }
 
 function drawFrame() {
     const textHeight = 30;
     const padding = 10
 
-
     let selectedLineIdx = gMeme.selectedLineIdx
     let x = gMeme.lines[selectedLineIdx].x
     let y = gMeme.lines[selectedLineIdx].y
     let textWidth = gMeme.lines[selectedLineIdx].textWidth
 
-    gCtx.strokeStyle = 'green'
+    gCtx.strokeStyle = 'orange'
     gCtx.lineWidth = 2
     gCtx.strokeRect(x - textWidth / 2 - padding, y - textHeight / 2 - padding, textWidth + padding * 2, textHeight + padding * 2)
-    renderMeme()
 }
 
-// gMeme = {
-//     selectedImgId: 5,
-//     selectedLineIdx: 0,
-//     LinesAddedCount: 0,
-//     lines: [
-//         {
-//             txt: 'Add Text Here',
-//             size: 40,
-//             color: 'black',
-//             fillColor: 'black',
-//             textWidth: 0,
-//             textHeight: 0,
-//             x: 250,
-//             y: 100,
+function OnDeleteLine() {
+    deleteLine()
+}
 
-//         },
-//     ]
+function onAlignLine(direction) {
+    alignLine(direction)
+}
+
+function onMouseClick(ev) {
+    const { offsetX, offsetY, clientX, clientY } = ev
+    // console.log(offsetX, gMeme.lines[0].y, gMeme.lines[0].textWidth);
+
+    const clickedLine = gMeme.lines.findIndex(line => {
+        return (
+            offsetX >= line.x - 150 && offsetX <= line.x + line.textWidth &&
+            offsetY >= line.y - 40 && offsetY < line.y + 30
+        )
+    })
+    if (clickedLine >= 0) {
+        selectedLineByLineClick(clickedLine)
+        drawFrame()
+        renderMeme()
+        inputFieldsDataFormUpdated()
+
+    }
+
+}
+
+function inputFieldsDataFormUpdated() {
+    const selectedLineIdx = gMeme.selectedLineIdx
+    const selectedLine = gMeme.lines[selectedLineIdx]
+
+    const { txt, color, fillColor, font } = selectedLine
+    document.querySelector('.txt-input').value = txt
+    document.querySelector('.color-picker-fill-input').value = fillColor
+    document.querySelector('.color-picker-input').value = color
+    document.querySelector('.font-type').value = font
+}
+
+function onSelectFontType(font) {
+    setFontType(font)
+}

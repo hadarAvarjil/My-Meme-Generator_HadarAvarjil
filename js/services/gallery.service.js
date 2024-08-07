@@ -6,7 +6,7 @@ _createImgs()
 
 // var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] }]
 
-function getImgs(){
+function getImgs() {
     let imgs = gImgs
     return imgs
 }
@@ -32,7 +32,7 @@ function _createImgs() {
         _createImg(4, ['funny', 'animal', 'cats']),
         _createImg(5, ['funny']),
         _createImg(6, ['funny', 'happy']),
-        _createImg(7, ['funny', 'happy', 'akward']),
+        _createImg(7, ['funny', 'happy', 'awkward']),
         _createImg(8, ['funny', 'happy']),
         _createImg(9, ['funny', 'happy']),
         _createImg(10, ['funny', 'happy', 'famous']),
