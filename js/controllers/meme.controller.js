@@ -152,3 +152,7 @@ function inputFieldsDataFormUpdated() {
 function onSelectFontType(font) {
     setFontType(font)
 }
+
+function onSaveMeme() {
+    saveMeme()
+}

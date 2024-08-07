@@ -1,15 +1,30 @@
 'use strict'
 
 let gImgs = []
+let gFilterBy = ''
 
 _createImgs()
 
 // var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] }]
 
 function getImgs() {
+    const filterBy = gFilterBy
+
     let imgs = gImgs
+    imgs =  _filterImgs(filterBy)
     return imgs
 }
+
+// var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] }]
+function _filterImgs(filterBy) {
+    let imgs = gImgs
+
+    if (filterBy) imgs = imgs.filter(img => img.keywords.some(keyword => keyword.toLowerCase().includes(filterBy.toLowerCase())))
+
+    return imgs
+}
+
+
 
 function _createImg(id, keywords = []) {
 
@@ -47,3 +62,8 @@ function _createImgs() {
     ]
     // _saveToStorage()
 }
+
+function setFilterBy() {
+    gFilterBy = document.querySelector('.filter-bar').value
+}
+

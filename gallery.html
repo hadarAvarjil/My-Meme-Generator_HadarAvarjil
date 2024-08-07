@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Hadar Avarjil</title>
+    <link rel="icon" href="img/LOGO.png" type="image/png">
+</head>
+
+<body class="main-layout" onload="onInitSavedGallery()">
+
+    <div class="main-screen" onclick="toggleMenu()"></div>
+
+    <header class="main-header full main-layout">
+        <div class="main-header-inner flex space-between align-center">
+            <h1 class="logo">memegen</h1>
+            <nav class="main-nav">
+                <ul class="nav-bar flex clean-list">
+                    <li><a href="index.html">Create</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+
+            </nav>
+            <button class="btn-toggle-menu" onclick="toggleMenu()">☰</button>
+            <button class="close-menu-btn" onclick="toggleMenu()">X</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="gallery-main ">
+            <div class="gallery-saved-meme grid-container">
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer full main-layout">
+        <div class="main-footer-inner flex align-center">
+            <h1 class="logo">memegen</h1>
+            <p>all rights reserved 2024</p>
+        </div>
+    </footer>
+
+
+    <script src="js/services/storage.servce.js"></script>
+    <script src="js/controllers/gallerySavedMeme.controller.js"></script>
+    <script src="js/controllers/index.js"></script>
+    <script src="js/services/gallery.service.js"></script>
+    <script src="js/controllers/gallery.controller.js"></script>
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/controllers/meme.controller.js"></script>
+
+
+</body>
+
+</html>

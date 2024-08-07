@@ -21,7 +21,7 @@
             <h1 class="logo">memegen</h1>
             <nav class="main-nav">
                 <ul class="nav-bar flex clean-list">
-                    <li><a href="#">Gallery</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
 
@@ -33,8 +33,8 @@
 
     <section class="gallery">
         <div class="search-bar-container full flex align-center">
-            <input list="keywords" class="filter-bar" name="keywords" id="keywords-word" autofocus
-                placeholder="Enter search keyword">
+            <input list="keywords" class="filter-bar" name="keywords" id="keywords-word" 
+                placeholder="Enter search keyword" oninput="onSetFilterBy(value)">
 
             <datalist id="keywords">
                 <option value="funny"></option>
@@ -125,6 +125,7 @@
                         <option value='Georgia'>Georgia</option>
                     </select>
 
+                    <button class=" btn save edit-btn" onclick="onSaveMeme()">Save</button>
                     <a href="#" class="download btn " onclick="downloadImg(this)" download="my-img.jpg">Download</a>
                 </div>
             </form>
@@ -140,11 +141,13 @@
     </footer>
 
 
+    <script src="js/services/storage.servce.js"></script>
     <script src="js/controllers/index.js"></script>
     <script src="js/services/gallery.service.js"></script>
     <script src="js/controllers/gallery.controller.js"></script>
     <script src="js/services/meme.service.js"></script>
     <script src="js/controllers/meme.controller.js"></script>
+    <script src="js/controllers/gallerySavedMeme.controller.js"></script>
 
 </body>
 

@@ -7,6 +7,7 @@ let gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     LinesAddedCount: 0,
+    savedImage: '',
     lines: [
         {
             txt: 'Add Text Here',
@@ -23,6 +24,8 @@ let gMeme = {
         },
     ]
 }
+
+let gSavedMemes = []
 
 let gLineY = 250
 
@@ -140,4 +143,22 @@ function setFontType(font) {
     const line = gMeme.selectedLineIdx
     gMeme.lines[line].font = font
     renderMeme()
+}
+
+function saveMeme() {
+    const savedMeme = JSON.parse(JSON.stringify(gMeme))
+    console.log('gMeme', gMeme);
+
+    const imgDataUrl = gElCanvas.toDataURL('image/jpeg')
+    savedMeme.savedImage = imgDataUrl
+    console.log(imgDataUrl);
+    
+    gSavedMemes.unshift(savedMeme)
+    console.log('gSavedMemes', gSavedMemes);
+    _saveToStorage()
+}
+
+function _saveToStorage() {
+    saveToStorage('memes', gSavedMemes)
+    
 }
