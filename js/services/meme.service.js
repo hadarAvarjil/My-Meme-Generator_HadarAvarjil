@@ -21,7 +21,7 @@ let gMeme = {
             textHeight: 40,
             textAlign: 'center',
             x: 0,
-            y: 100,
+            y: 40,
             font: 'Arial',
             isDrag: false
         },
@@ -30,7 +30,7 @@ let gMeme = {
 
 let gSavedMemes = []
 
-let gLineY = 250
+let gLineY = 100
 
 function setLineData(line, axisX, textWidth) {
     gMeme.lines[line].textWidth = textWidth
@@ -53,7 +53,7 @@ function addLine() {
         isDrag: false
     }
     gMeme.lines.push(newLine)
-    gLineY += 50
+    gLineY += 100
     if (gLineY > 350) gLineY = 100
 
     if (gMeme.LinesAddedCount === 2) return
@@ -199,6 +199,17 @@ function _saveToStorage() {
     saveToStorage('memes', gSavedMemes)
 
 }
+
+function setEmoji(emoji) {
+
+    const axisX = gElCanvas.width / 2 + getRandomInt(-200, 200)
+    const axisY = gElCanvas.height / 2 + getRandomInt(-200, 200)
+    const emojiSelected = emoji
+
+    gMeme.emojis.push({ emoji: emojiSelected, posX: axisX, posY: axisY })
+    renderMeme()
+}
+
 
 /////////////////////////////////////////////////
 

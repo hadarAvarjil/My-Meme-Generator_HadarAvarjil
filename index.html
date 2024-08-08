@@ -48,14 +48,16 @@
                 </datalist>
                 <i class="fas fa-search search-icon"></i>
             </div>
+            <div class="gallery-btn flex">
             <div class="clear-search-container">
                 <button class="clear-search" onclick="onClearSearch()">Clear Search</button>
             </div>
             <div class="flexible-container">
                 <button class="flexible" onclick="onChooseflexible()">I'm Flexible!</button>
             </div>
-            <div class="flexible-container">
-                <button class="flexible" onclick="onChooseflexible()">Load Image</button>
+            <div class="file-input">
+                <input class="load-image" type="file" class=" load-image file-input btn" name="image" onchange="onLoadImage(event)" accept="image/*" />
+            </div>
             </div>
 
 

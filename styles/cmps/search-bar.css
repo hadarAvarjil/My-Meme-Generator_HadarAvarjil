@@ -43,35 +43,3 @@ i {
     appearance: none;
 }
 
-.clear-search {
-    font-family: alexandria, sans-serif;
-    height: 40px;
-    border-radius: 5px;
-    background-color: var(--secondary-1);
-    margin-left: .8em;
-    border: none;
-    outline: none;
-    color: white;
-    cursor: pointer;
-}
-.clear-search:hover{
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);    
-}
-
-.flexible {
-    margin-left: .8em;
-    font-family: alexandria, sans-serif;
-    background-color: var(--secondary-1);
-    height: 40px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    color: white;
-    cursor: pointer;
-}
-
-.flexible:hover{
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);    
-}

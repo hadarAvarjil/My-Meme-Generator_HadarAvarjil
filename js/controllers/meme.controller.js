@@ -135,9 +135,6 @@ function onMouseClick(ev) {
     const { offsetX, offsetY, clientX, clientY } = ev
     console.log(offsetX, gMeme.lines[0].x, gMeme.lines[0].textWidth);
 
-
-
-
     const clickedLine = gMeme.lines.findIndex(line => {
         return (
             offsetX >= line.textWidth - line.x && offsetX <= line.x + line.textWidth &&
@@ -149,7 +146,6 @@ function onMouseClick(ev) {
         drawFrame()
         renderMeme()
         inputFieldsDataFormUpdated()
-
     }
 
 }
@@ -184,15 +180,6 @@ function onDrawEmoji(span) {
     setEmoji(emoji)
 }
 
-function setEmoji(emoji) {
-
-    const axisX = gElCanvas.width / 2 + getRandomInt(-100, 100)
-    const axisY = gElCanvas.height / 2 + getRandomInt(-100, 100)
-    const emojiSelected = emoji
-
-    gMeme.emojis.push({ emoji: emojiSelected, posX: axisX, posY: axisY })
-    renderMeme()
-}
 
 function drawEmoji(emoji, axisX, axisY) {
 
@@ -202,8 +189,37 @@ function drawEmoji(emoji, axisX, axisY) {
 
 }
 
+function onLoadImage(ev) {
+    loadImageFromInput(ev, renderImg)
+}
 
-////////////////////////////////////////
+function loadImageFromInput(ev, onImageReady) {
+    const reader = new FileReader()
+    reader.onload = function (event) {
+        let elImg = new Image()
+        elImg.src = event.target.result
+        elImg.onload = () => onImageReady(elImg)
+    }
+    reader.readAsDataURL(ev.target.files[0])
+}
+
+function renderImg(elImg) {
+    console.log(elImg);
+    const loadedImage = {
+        id: 19,
+        url: elImg,
+        keywords: [],
+    }
+    gImgs.push(loadedImage)
+    console.log(gImgs);
+
+    // gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+}
+
+
+
+
+////////////////// Please Ignore //////////////////
 
 function onDown(ev) {
     //* Get the ev pos from mouse or touch
