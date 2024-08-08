@@ -22,7 +22,7 @@ let gMeme = {
             textAlign: 'center',
             x: 0,
             y: 100,
-            font: 'Arial', 
+            font: 'Arial',
             isDrag: false
         },
     ]
@@ -73,7 +73,7 @@ function setImg(imageID) {
 
     elGallery.classList.add('hidden')
     eleditor.classList.remove('hidden')
-    
+
 }
 
 function setLineTxt(txt) {
@@ -167,6 +167,31 @@ function saveMeme() {
     savedMeme.savedImage = imgDataUrl
 
     gSavedMemes.unshift(savedMeme)
+
+    gMeme = {
+        selectedImgId: 5,
+        selectedLineIdx: 0,
+        LinesAddedCount: 0,
+        savedImage: '',
+        selectedEmojisIdx: 0,
+        emojisAddedCount: 0,
+        emojis: [],
+        lines: [
+            {
+                txt: 'Add Text Here',
+                size: 35,
+                color: '#000000',
+                fillColor: '#000000',
+                textWidth: 325,
+                textHeight: 40,
+                textAlign: 'center',
+                x: 0,
+                y: 100,
+                font: 'Arial',
+                isDrag: false
+            },
+        ]
+    }
     _saveToStorage()
 }
 

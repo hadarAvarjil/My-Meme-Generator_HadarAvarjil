@@ -10,7 +10,6 @@
         background-color: var(--primary1);
     }
 
-
     .main-header .logo {
         font-size: 2em;
         padding: .5em;
@@ -85,8 +84,6 @@
     
     }
 
-
-
 }
 
 @media (min-width:640px) {
@@ -155,9 +152,6 @@
         display: none;
     }
 }
-
-
-
     @media (min-width:1000px) {
         .main-layout {
             grid-template-columns:

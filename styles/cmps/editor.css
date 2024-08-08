@@ -45,8 +45,8 @@ canvas {
         'R3C1 R3C2 R3C3 R3C4 R3C5'
         'R4C1 R4C1 R4C1 R4C4 R4C5'
         'R5C0 R5C1 R5C1 R5C1 R5C5'
-        'R6C1 R6C1 R6C3 R6C4 R6C5'
-        'R7C1 R7C1 R7C3 R7C4 R7C5';
+        'R6C1 R6C2 R6C2 R6C2 R6C5'
+        'R7C1 R7C2 R7C2 R7C2 R7C5';
     align-items: center;
     justify-items: center;
 
@@ -147,7 +147,7 @@ canvas {
 }
 
 .download {
-    grid-area: R7C1;
+    grid-area: R7C2;
     height: 40px;
     width: 124px;
     border-radius: 5px;
@@ -198,7 +198,7 @@ canvas {
 }
 
 .save {
-    grid-area: R6C1;
+    grid-area: R6C2;
     height: 40px;
     width: 124px;
     border-radius: 5px;

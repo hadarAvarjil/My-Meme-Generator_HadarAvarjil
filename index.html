@@ -73,29 +73,29 @@
         <div class="editor-options-board">
             <form id="editor-options-form" onsubmit="handleSubmit(event,this)">
                 <div class="editor-options-board-layout">
-                    <input class="txt-input" oninput="onSetLineTxt(this.value)" type="text" id="textInput"
+                    <input class="txt-input box-shadow" oninput="onSetLineTxt(this.value)" type="text" id="textInput"
                         name="textInput" placeholder="Add Text Here" />
 
-                    <button class="add edit-btn" onclick="onAddLine()"><img src="img/btn/add.png" alt="add edit-btn">
+                    <button class="add edit-btn box-shadow" onclick="onAddLine()"><img src="img/btn/add.png" alt="add edit-btn">
                     </button>
 
-                    <button class="trash edit-btn" onclick="OnDeleteLine()"><img src="img/btn/trash.png"
+                    <button class="trash edit-btn box-shadow" onclick="OnDeleteLine()"><img src="img/btn/trash.png"
                             alt="trash edit-btn">
                     </button>
 
-                    <button class="up-and-down edit-btn" onclick="onSwitchLine()"><img
+                    <button class="up-and-down edit-btn box-shadow" onclick="onSwitchLine()"><img
                             src="img/btn/up-and-down-opposite.png" alt="up-and-down">
                     </button>
 
-                    <button class="align-to-left edit-btn" onclick="onAlignLine('right')"><img
+                    <button class="align-to-left edit-btn box-shadow" onclick="onAlignLine('right')"><img
                             src="img/btn/align-to-left.png" alt="align-to-left">
                     </button>
 
-                    <button class="center-text edit-btn" onclick="onAlignLine('center')"><img
+                    <button class="center-text edit-btn box-shadow" onclick="onAlignLine('center')"><img
                             src="img/btn/center-text-alignmen.png" alt="center-text">
                     </button>
 
-                    <button class="align-to-right edit-btn" onclick="onAlignLine('left')"><img
+                    <button class="align-to-right edit-btn box-shadow" onclick="onAlignLine('left')"><img
                             src="img/btn/align-to-right.png" alt="align-to-right">
                     </button>
 
@@ -103,28 +103,28 @@
                         <label for='color-picker'>
                             <img src="img/btn/A.png" onclick="onColorPicker()" alt="Color Picker">
                         </label>
-                        <input onchange="onChangeStrokeColor(value)" class="color-picker-input" type="color"
+                        <input onchange="onChangeStrokeColor(value)" class="color-picker-input box-shadow" type="color"
                             value="#000000" id="color-picker" name="color-picker" />
                     </div>
 
-                    <div class="color-picker-container-fill edit-btn">
+                    <div class="color-picker-container-fill edit-btn box-shadow">
                         <label for='color-picker-fill'>
                             <img src="img/btn/paint-board-and-brus.png" onclick="onColorPicker()"
                                 alt="color-picker-fill">
                         </label>
                         <input onchange="onChangeFillColor(value)" class="color-picker-fill-input" type="color"
-                            id="color-picker-fill" name="fill-color" value="#000000" />
+                            id="color-picker-fill box-shadow" name="fill-color" value="#000000" />
                     </div>
 
-                    <button class="edit-btn decrease " onclick="onFontdecreased()"><img
+                    <button class="edit-btn decrease box-shadow" onclick="onFontdecreased()"><img
                             src="img/btn/decrease font - icon.png" alt="decrease font">
                     </button>
 
-                    <button class="increase edit-btn" onclick="onFontIncreased()"><img
+                    <button class="increase edit-btn box-shadow" onclick="onFontIncreased()"><img
                             src="img/btn/increase font - icon.png" alt="decrease font">
                     </button>
 
-                    <select class="edit-btn font-type" onchange="onSelectFontType(value)">
+                    <select class="edit-btn font-type box-shadow" onchange="onSelectFontType(value)">
                         <option value='Impact'>Impact</option>
                         <option value='Arial'>Arial</option>
                         <option value='Verdana'>Verdana</option>
@@ -135,7 +135,7 @@
                         <option value='Trebuchet MS'>Trebuchet MS</option>
                     </select>
 
-                    <div class="emoji-input-container">
+                    <div class="emoji-input-container box-shadow">
                         <div class="left-side">
                             <button class="scroll-btn left" id="scroll-left"><img class="scrolling"
                                     src="img/btn/left.png" alt="Right">
@@ -165,8 +165,8 @@
                         </div>
                     </div>
 
-                    <button class=" btn save edit-btn" onclick="onSaveMeme()">Save</button>
-                    <a href="#" class=" btn download edit-btn " onclick="downloadImg(this)"
+                    <button class=" btn save edit-btn box-shadow" onclick="onSaveMeme()">Save</button>
+                    <a href="#" class=" btn download edit-btn box-shadow" onclick="downloadImg(this)"
                         download="my-img.jpg">Download</a>
                 </div>
             </form>

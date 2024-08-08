@@ -187,7 +187,7 @@ function onDrawEmoji(span) {
 function setEmoji(emoji) {
 
     const axisX = gElCanvas.width / 2 + getRandomInt(-100, 100)
-    const axisY = gElCanvas.height / 2
+    const axisY = gElCanvas.height / 2 + getRandomInt(-100, 100)
     const emojiSelected = emoji
 
     gMeme.emojis.push({ emoji: emojiSelected, posX: axisX, posY: axisY })
