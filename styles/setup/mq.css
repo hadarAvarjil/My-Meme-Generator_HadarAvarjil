@@ -63,12 +63,26 @@
         pointer-events: auto;
     }
 
-    .editor{
+    .editor {
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
+    .canvas-container {
+        width: 85vw;
+        height: 50vh;
+    }
+
+
+
+}
+
+@media (min-width:640px) {
+    .main-layout {
+        grid-template-columns:
+            minmax(20px, 1fr) minmax(auto, 600px) minmax(20px, 1fr);
+    }
 
 }
 
@@ -78,59 +92,56 @@
         grid-template-columns:
             minmax(20px, 1fr) minmax(auto, 800px) minmax(20px, 1fr);
     }
-
-    .btn-toggle-menu {
-        display: none;
-    }
-
-    .close-menu-btn {
-        display: none;
-    }
-
-    .main-header a {
-        font-size: 1.4em;
-        width: 130px;
-        height: 130px;
-        padding-bottom: 0.9em;
-        transition: box-shadow 0.4s;
-
-    }
-
-    .main-header .nav-bar li:first-child {
-        padding-inline: 1.1em;
-        border-inline-end: 1px solid var(--primary-1);
-    }
-
-    .main-header .nav-bar li:nth-child(2) {
-        padding-left: 1.1em;
-    }
-
-
-    .main-header .nav-bar a:hover {
-        box-shadow: inset 0 -6px 0 var(--primary-base);
-        color: var(--primary-base);
-    }
-
-    .main-header .nav-bar a:active {
-        box-shadow: inset 0 -6px 0 var(--primary-base);
-        color: var(--primary-base);
-        cursor: default;
-    }
-
-    .editor{
-        justify-content: space-around;
-        align-items: center;
-    }
-
-   
 }
+
+.btn-toggle-menu {
+    display: none;
+}
+
+.close-menu-btn {
+    display: none;
+}
+
+.main-header a {
+    font-size: 1.4em;
+    width: 130px;
+    height: 130px;
+    padding-bottom: 0.9em;
+    transition: box-shadow 0.4s;
+
+}
+
+.main-header .nav-bar li:first-child {
+    padding-inline: 1.1em;
+    border-inline-end: 1px solid var(--primary-1);
+}
+
+.main-header .nav-bar li:nth-child(2) {
+    padding-left: 1.1em;
+}
+
+
+.main-header .nav-bar a:hover {
+    box-shadow: inset 0 -6px 0 var(--primary-base);
+    color: var(--primary-base);
+}
+
+.main-header .nav-bar a:active {
+    box-shadow: inset 0 -6px 0 var(--primary-base);
+    color: var(--primary-base);
+    cursor: default;
+}
+
+.editor {
+    justify-content: space-around;
+    align-items: center;
+}
+
 
 
 @media (min-width:1000px) {
     .main-layout {
         grid-template-columns:
-            minmax(auto, 50px) minmax(900px, 1fr) minmax(auto, 50px);
+            minmax(20px, 1fr) minmax(auto, 980px) minmax(20px, 1fr);
     }
-
-
 }

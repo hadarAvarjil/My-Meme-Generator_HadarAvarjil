@@ -26,3 +26,11 @@ function onSetFilterBy() {
 
 }
 
+function onClearSearch(){
+    setClearSearch()
+}
+
+function onChooseflexible(){
+    setFlexible()
+}
+

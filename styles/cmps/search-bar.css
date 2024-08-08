@@ -42,3 +42,28 @@ i {
     border-bottom: 2px solid var(--primary-base1);
     appearance: none;
 }
+
+.clear-search {
+    font-family: alexandria, sans-serif;
+    height: 40px;
+    border-radius: 5px;
+    background-color: var(--secondary-1);
+    margin-left: .8em;
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+}
+
+
+.flexible {
+    margin-left: .8em;
+    font-family: alexandria, sans-serif;
+    background-color: var(--secondary-1);
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+}

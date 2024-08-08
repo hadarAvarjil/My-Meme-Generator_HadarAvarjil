@@ -8,6 +8,9 @@ let gMeme = {
     selectedLineIdx: 0,
     LinesAddedCount: 0,
     savedImage: '',
+    selectedEmojisIdx: 0,
+    emojisAddedCount: 0,
+    emojis: [],
     lines: [
         {
             txt: 'Add Text Here',
@@ -17,10 +20,9 @@ let gMeme = {
             textWidth: 325,
             textHeight: 40,
             textAlign: 'center',
-            x: 250,
+            x: 0,
             y: 100,
             font: 'Arial'
-
         },
     ]
 }
@@ -28,6 +30,11 @@ let gMeme = {
 let gSavedMemes = []
 
 let gLineY = 250
+
+function setLineData(line, axisX, textWidth) {
+    gMeme.lines[line].textWidth = textWidth
+    gMeme.lines[line].x = axisX
+}
 
 function addLine() {
     if (gMeme.lines.length === 3) return
@@ -39,7 +46,7 @@ function addLine() {
         fillColor: '#000000',
         textWidth: 0,
         textHeight: 0,
-        x: 250,
+        x: 0,
         y: gLineY,
         font: 'Arial'
     }
@@ -152,7 +159,7 @@ function saveMeme() {
     const imgDataUrl = gElCanvas.toDataURL('image/jpeg')
     savedMeme.savedImage = imgDataUrl
     console.log(imgDataUrl);
-    
+
     gSavedMemes.unshift(savedMeme)
     console.log('gSavedMemes', gSavedMemes);
     _saveToStorage()
@@ -160,5 +167,5 @@ function saveMeme() {
 
 function _saveToStorage() {
     saveToStorage('memes', gSavedMemes)
-    
+
 }

@@ -5,17 +5,15 @@ let gFilterBy = ''
 
 _createImgs()
 
-// var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] }]
 
 function getImgs() {
     const filterBy = gFilterBy
 
     let imgs = gImgs
-    imgs =  _filterImgs(filterBy)
+    imgs = _filterImgs(filterBy)
     return imgs
 }
 
-// var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] }]
 function _filterImgs(filterBy) {
     let imgs = gImgs
 
@@ -41,24 +39,24 @@ function _createImgs() {
     // if (gImgs && (gImgs.length > 0) return
 
     gImgs = [
-        _createImg(1, ['funny', 'famous']),
-        _createImg(2, ['dogs', 'animal', 'happy']),
-        _createImg(3, ['funny', 'dogs', 'animal', 'happy']),
+        _createImg(1, ['funny', 'famous', 'politicians']),
+        _createImg(2, ['dogs', 'animal']),
+        _createImg(3, ['funny', 'dogs', 'animal']),
         _createImg(4, ['funny', 'animal', 'cats']),
         _createImg(5, ['funny']),
         _createImg(6, ['funny', 'happy']),
         _createImg(7, ['funny', 'happy', 'awkward']),
         _createImg(8, ['funny', 'happy']),
         _createImg(9, ['funny', 'happy']),
-        _createImg(10, ['funny', 'happy', 'famous']),
+        _createImg(10, ['funny', 'happy', 'famous','politicians']),
         _createImg(11, ['akward']),
         _createImg(12, ['funny', 'famous']),
         _createImg(13, ['funny', 'happy', 'drinks']),
         _createImg(14, ['comics']),
         _createImg(15, ['funny']),
         _createImg(16, ['funny', 'happy', 'famous', 'comics']),
-        _createImg(17, ['funny', 'happy', 'famous']),
-        _createImg(18, ['funny', 'happy', 'comics']),
+        _createImg(17, ['funny', 'famous','politicians']),
+        _createImg(18, ['comics']),
     ]
     // _saveToStorage()
 }
@@ -67,3 +65,15 @@ function setFilterBy() {
     gFilterBy = document.querySelector('.filter-bar').value
 }
 
+function setClearSearch() {
+    const elSearchbar = document.querySelector('.filter-bar')
+    elSearchbar.value = ""
+    gFilterBy = ''
+    renderGallery()
+}
+
+function setFlexible() {
+    const randomImageIdx = getRandomInt(1, 17)
+    setImg(randomImageIdx)
+    renderMeme()
+}

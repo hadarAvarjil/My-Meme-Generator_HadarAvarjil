@@ -1,26 +1,32 @@
 .editor {
     background-color: var(--primary-2);
     padding-top: 10px;
+    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
 }
 
 .canvas-container {
+    flex: 1;
     width: 100vw;
-    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* overflow: hidden; */
+    overflow: hidden;
+    padding-left: 1em;
+    border: 5px solid var(--primary-base);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
 
 canvas {
     width: 100%;
     display: block;
-    object-fit: contain;
-    padding-left: .8em;
 }
 
 .editor-options-board {
-    width: 80vw;
+    flex: 1;
     justify-content: center;
     align-items: center;
     margin: 0;
@@ -28,14 +34,16 @@ canvas {
 
 .editor-options-board-layout {
     display: grid;
+    justify-content: center;
+    align-items: center;
     grid-template-columns: repeat(5, 65px);
     grid-template-rows: repeat(7, 65px);
     grid-template-areas:
         'R1 R1 R1 R1 R1'
         '. R2C2 R2C3 R2C4 .'
         'R3C1 R3C2 R3C3 R3C4 R3C5'
-        'R4C1 R4C1 R4C3 R4C4 R4C5'
-        'R5C1 R5C1 R5C3 R5C4 R5C5'
+        'R4C1 R4C1 R4C1 R4C4 R4C5'
+        'R5C0 R5C1 R5C1 R5C1 R5C5'
         'R6C1 R6C1 R6C3 R6C4 R6C5'
         'R7C1 R7C1 R7C3 R7C4 R7C5';
     align-items: center;
@@ -140,7 +148,7 @@ canvas {
 
 .download {
     grid-area: R7C1;
-    height: 50px;
+    height: 40px;
     width: 124px;
     border-radius: 5px;
     background-color: var(--secondary-1);
@@ -180,7 +188,7 @@ canvas {
     position: relative;
     grid-area: R4C1;
     height: 40px;
-    width: 105px;
+    width: 170px;
     font-size: 1.2em;
     padding-inline: 5px;
 
@@ -189,9 +197,9 @@ canvas {
     justify-self: center;
 }
 
-.save{
-    grid-area:  R6C1;
-    height: 50px;
+.save {
+    grid-area: R6C1;
+    height: 40px;
     width: 124px;
     border-radius: 5px;
     background-color: var(--secondary-1);
@@ -204,3 +212,64 @@ canvas {
     justify-self: center;
 }
 
+
+.emoji-input-container {
+    grid-area: R5C1;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    white-space: nowrap;
+    background-color: var(--primary-3);
+    padding: 10px 30px;
+
+    border-radius: 5px;
+
+}
+
+.emoji-scroll {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-y: hidden;
+}
+
+
+.emoji {
+    font-size: 1.5rem;
+    margin-right: 2px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.emoji:hover {
+    transform: scale(1.2);
+}
+
+.scroll-btn {
+    background-color: white;
+    border: none;
+    font-size: .5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.left {
+    left: 0;
+    border-radius: 5px;
+}
+
+.right {
+    right: 0;
+    border-radius: 5px;
+}
+
+.scrolling {
+    height: 22px;
+    margin: 2px;
+}

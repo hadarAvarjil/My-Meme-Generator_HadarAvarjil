@@ -16,12 +16,18 @@ function renderMeme() {
 
     elImg.src = `img/meme-imgs(square)/${meme.selectedImgId}.jpg`
     elImg.onload = () => {
-        gCtx.drawImage(elImg, 0, 0, elImg.naturalWidth, elImg.naturalHeight)
+        gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
+        gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+
 
         meme.lines.forEach((line, index) => {
             drawText(line.txt, line.x, line.y, line.color, line.size, line.fillColor, index, line.textAlign, line.font)
         })
+        meme.emojis.forEach(emoji => {
+            drawEmoji(emoji.emoji, emoji.posX, emoji.posY)
+        })
         drawFrame()
+        drawEmoji()
     }
     window.addEventListener('resize', resizeCanvas)
 }
@@ -36,6 +42,9 @@ function drawText(text, x, y, strokeColor, size, fillColor, selectedLine, textAl
     const fontSize = size
     const align = textAlign
     const fontType = font
+    const axisX = gElCanvas.width / 2
+
+    const line = selectedLine
 
     gCtx.lineWidth = 1
     gCtx.strokeStyle = strokeColor
@@ -44,14 +53,18 @@ function drawText(text, x, y, strokeColor, size, fillColor, selectedLine, textAl
     gCtx.textAlign = `${align}`
     gCtx.textBaseline = 'middle'
 
-    gCtx.fillText(text, x, y, 400)
-    gCtx.strokeText(text, x, y, 400)
+    gCtx.fillText(text, axisX, y, 400)
+    gCtx.strokeText(text, axisX, y, 400)
 
     const textMetrics = gCtx.measureText(text)
     const textWidth = textMetrics.width
-    gMeme.lines[selectedLine].textWidth = textWidth
+
+    updateLineData(line, axisX, textWidth)
 }
 
+function updateLineData(line, axisX, textWidth) {
+    setLineData(line, axisX, textWidth)
+}
 function onSetLineTxt(txt) {
     setLineTxt(txt)
 }
@@ -120,11 +133,14 @@ function onAlignLine(direction) {
 
 function onMouseClick(ev) {
     const { offsetX, offsetY, clientX, clientY } = ev
-    // console.log(offsetX, gMeme.lines[0].y, gMeme.lines[0].textWidth);
+    console.log(offsetX, gMeme.lines[0].x, gMeme.lines[0].textWidth);
+
+
+
 
     const clickedLine = gMeme.lines.findIndex(line => {
         return (
-            offsetX >= line.x - 150 && offsetX <= line.x + line.textWidth &&
+            offsetX >= line.textWidth - line.x && offsetX <= line.x + line.textWidth &&
             offsetY >= line.y - 40 && offsetY < line.y + 30
         )
     })
@@ -155,4 +171,30 @@ function onSelectFontType(font) {
 
 function onSaveMeme() {
     saveMeme()
+}
+
+function onDrawEmoji(span) {
+    const emoji = span.getAttribute('data-emoji')
+    setEmoji(emoji)
+}
+
+function setEmoji(emoji) {
+
+    const axisX = gElCanvas.width / 2 + getRandomInt(-100, 100)
+    const axisY = gElCanvas.height / 2
+    const emojiSelected = emoji
+
+
+    gMeme.emojis.push({ emoji: emojiSelected, posX: axisX, posY: axisY })
+    console.log(gMeme);
+    renderMeme()
+
+}
+
+function drawEmoji(emoji, axisX, axisY) {
+
+    gCtx.font = '2rem Arial'
+    gCtx.textBaseline = 'top'
+    gCtx.fillText(emoji, axisX, axisY)
+
 }

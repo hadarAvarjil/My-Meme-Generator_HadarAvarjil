@@ -33,20 +33,29 @@
 
     <section class="gallery">
         <div class="search-bar-container full flex align-center">
-            <input list="keywords" class="filter-bar" name="keywords" id="keywords-word" 
-                placeholder="Enter search keyword" oninput="onSetFilterBy(value)">
+            <div class="search bar full flex align-center">
+                <input list="keywords" class="filter-bar" name="keywords" id="keywords-word"
+                    placeholder="Enter search keyword" oninput="onSetFilterBy(value)">
 
-            <datalist id="keywords">
-                <option value="funny"></option>
-                <option value="famous"></option>
-                <option value="happy"></option>
-                <option value="drinks"></option>
-                <option value="comics"></option>
-                <option value="awkward"></option>
-                <option value="dogs"></option>
-                <option value="cats"></option>
-            </datalist>
-            <i class="fas fa-search search-icon"></i>
+                <datalist id="keywords">
+                    <option value="funny"></option>
+                    <option value="famous"></option>
+                    <option value="happy"></option>
+                    <option value="drinks"></option>
+                    <option value="comics"></option>
+                    <option value="awkward"></option>
+                    <option value="dogs"></option>
+                    <option value="cats"></option>
+                    <option value="politicians"></option>
+                </datalist>
+                <i class="fas fa-search search-icon"></i>
+            </div>
+            <div class="clear-search-container">
+                <button class="clear-search" onclick="onClearSearch()">Clear</button>
+            </div>
+            <div class="flexible-container">
+                <button class="flexible" onclick="onChooseflexible()">I'm flexible!</button>
+            </div>
 
         </div>
 
@@ -123,10 +132,44 @@
                         <option value='Verdana'>Verdana</option>
                         <option value='Papyrus'>Papyrus</option>
                         <option value='Georgia'>Georgia</option>
+                        <option value='Tahoma'>Tahoma</option>
+                        <option value='Lucida Console'>Lucida Console</option>
+                        <option value='Trebuchet MS'>Trebuchet MS</option>
                     </select>
 
+                    <div class="emoji-input-container">
+                        <div class="left-side">
+                            <button class="scroll-btn left" id="scroll-left"><img class="scrolling"
+                                    src="img/btn/left.png" alt="Right">
+                            </button>
+                        </div>
+                        <div class="emoji-scroll">
+                            <span class="emoji" data-emoji="😀" onclick="onDrawEmoji(this)">😀</span>
+                            <span class="emoji" data-emoji="😂" onclick="onDrawEmoji(this)">😂</span>
+                            <span class="emoji" data-emoji="😍" onclick="onDrawEmoji(this)">😍</span>
+                            <span class="emoji" data-emoji="🥺" onclick="onDrawEmoji(this)">🥺</span>
+                            <span class="emoji" data-emoji="😎" onclick="onDrawEmoji(this)">😎</span>
+                            <span class="emoji" data-emoji="😴" onclick="onDrawEmoji(this)">😴</span>
+                            <span class="emoji" data-emoji="😜" onclick="onDrawEmoji(this)">😜</span>
+                            <span class="emoji" data-emoji="😡" onclick="onDrawEmoji(this)">😡</span>
+                            <span class="emoji" data-emoji="🥳" onclick="onDrawEmoji(this)">🥳</span>
+                            <span class="emoji" data-emoji="🙃" onclick="onDrawEmoji(this)">🙃</span>
+                            <span class="emoji" data-emoji="😢" onclick="onDrawEmoji(this)">😢</span>
+                            <span class="emoji" data-emoji="💩" onclick="onDrawEmoji(this)">💩</span>
+                            <span class="emoji" data-emoji="🙌" onclick="onDrawEmoji(this)">🙌</span>
+                            <span class="emoji" data-emoji="🦒" onclick="onDrawEmoji(this)">🦒</span>
+                            <span class="emoji" data-emoji="🦋" onclick="onDrawEmoji(this)">🦋</span>
+                        </div>
+                        <div class="right-side">
+                            <button class="scroll-btn right" id="scroll-right"><img class="scrolling"
+                                    src="img/btn/Right.png" alt="Left">
+                            </button>
+                        </div>
+                    </div>
+
                     <button class=" btn save edit-btn" onclick="onSaveMeme()">Save</button>
-                    <a href="#" class="download btn " onclick="downloadImg(this)" download="my-img.jpg">Download</a>
+                    <a href="#" class=" btn download edit-btn " onclick="downloadImg(this)"
+                        download="my-img.jpg">Download</a>
                 </div>
             </form>
         </div>
@@ -141,6 +184,7 @@
     </footer>
 
 
+    <script src="js/services/utils.js"></script>
     <script src="js/services/storage.servce.js"></script>
     <script src="js/controllers/index.js"></script>
     <script src="js/services/gallery.service.js"></script>
