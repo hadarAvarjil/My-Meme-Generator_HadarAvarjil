@@ -22,7 +22,8 @@ let gMeme = {
             textAlign: 'center',
             x: 0,
             y: 100,
-            font: 'Arial'
+            font: 'Arial', 
+            isDrag: false
         },
     ]
 }
@@ -48,7 +49,8 @@ function addLine() {
         textHeight: 0,
         x: 0,
         y: gLineY,
-        font: 'Arial'
+        font: 'Arial',
+        isDrag: false
     }
     gMeme.lines.push(newLine)
     gLineY += 50
@@ -66,6 +68,12 @@ function getMeme() {
 
 function setImg(imageID) {
     gMeme.selectedImgId = imageID
+    const elGallery = document.querySelector('.gallery')
+    const eleditor = document.querySelector('.editor')
+
+    elGallery.classList.add('hidden')
+    eleditor.classList.remove('hidden')
+    
 }
 
 function setLineTxt(txt) {
@@ -154,18 +162,25 @@ function setFontType(font) {
 
 function saveMeme() {
     const savedMeme = JSON.parse(JSON.stringify(gMeme))
-    console.log('gMeme', gMeme);
 
     const imgDataUrl = gElCanvas.toDataURL('image/jpeg')
     savedMeme.savedImage = imgDataUrl
-    console.log(imgDataUrl);
 
     gSavedMemes.unshift(savedMeme)
-    console.log('gSavedMemes', gSavedMemes);
     _saveToStorage()
 }
 
 function _saveToStorage() {
     saveToStorage('memes', gSavedMemes)
 
+}
+
+/////////////////////////////////////////////////
+
+function isClicked(clickedPos) {
+    const { pos } = gMeme
+    //* Calc the distance between two dots
+    const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
+    //* If its smaller then the radius of the circle, we know we clicked inside the circle
+    return distance <= gCircle.size
 }

@@ -1,3 +1,6 @@
+.gallery{
+    height: 100%;
+}
 .gallery-main {
     background-color: var(--primary-2);
 
@@ -11,8 +14,6 @@
     grid-template-rows: repeat(3, 300px);
     height: 50vh;
     overflow: auto;
-    /* width: fit-content; */
-
 }
 
 img {
@@ -23,8 +24,17 @@ img {
 }
 
 .cell {
+    margin-top: 10px;
     padding: 10px;
     border: 5px solid var(--primary-base);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cell:hover{
+    background: var( --primary-base);
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }

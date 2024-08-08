@@ -22,8 +22,6 @@ function _filterImgs(filterBy) {
     return imgs
 }
 
-
-
 function _createImg(id, keywords = []) {
 
     return {
@@ -34,9 +32,6 @@ function _createImg(id, keywords = []) {
 }
 
 function _createImgs() {
-
-    // gImgs = loadFromStorage('imgs')
-    // if (gImgs && (gImgs.length > 0) return
 
     gImgs = [
         _createImg(1, ['funny', 'famous', 'politicians']),
@@ -58,7 +53,6 @@ function _createImgs() {
         _createImg(17, ['funny', 'famous','politicians']),
         _createImg(18, ['comics']),
     ]
-    // _saveToStorage()
 }
 
 function setFilterBy() {

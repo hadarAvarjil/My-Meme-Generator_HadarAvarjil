@@ -42,6 +42,8 @@
         position: absolute;
         top: 0;
         right: 0;
+        height: 30px;
+        ;
 
         font-size: 1.2rem;
         padding: 10px;
@@ -74,6 +76,15 @@
         height: 50vh;
     }
 
+    .main-footer {
+        height: 90px;
+        background-color: var(--secondary-1);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    
+    }
+
 
 
 }
@@ -92,56 +103,69 @@
         grid-template-columns:
             minmax(20px, 1fr) minmax(auto, 800px) minmax(20px, 1fr);
     }
-}
-
-.btn-toggle-menu {
-    display: none;
-}
-
-.close-menu-btn {
-    display: none;
-}
-
-.main-header a {
-    font-size: 1.4em;
-    width: 130px;
-    height: 130px;
-    padding-bottom: 0.9em;
-    transition: box-shadow 0.4s;
-
-}
-
-.main-header .nav-bar li:first-child {
-    padding-inline: 1.1em;
-    border-inline-end: 1px solid var(--primary-1);
-}
-
-.main-header .nav-bar li:nth-child(2) {
-    padding-left: 1.1em;
-}
 
 
-.main-header .nav-bar a:hover {
-    box-shadow: inset 0 -6px 0 var(--primary-base);
-    color: var(--primary-base);
-}
+    .close-menu-btn {
+        display: none;
+    }
 
-.main-header .nav-bar a:active {
-    box-shadow: inset 0 -6px 0 var(--primary-base);
-    color: var(--primary-base);
-    cursor: default;
-}
+    .main-header a {
+        font-size: 1.4em;
+        width: 130px;
+        height: 130px;
+        padding-bottom: 0.9em;
+        transition: box-shadow 0.4s;
 
-.editor {
-    justify-content: space-around;
-    align-items: center;
-}
+    }
+
+    .main-header .nav-bar li:first-child {
+        padding-inline: 1.1em;
+        border-inline-end: 1px solid var(--primary-1);
+    }
+
+    .main-header .nav-bar li:nth-child(2) {
+        padding-left: 1.1em;
+    }
 
 
+    .main-header .nav-bar a:hover {
+        box-shadow: inset 0 -6px 0 var(--primary-base);
+        color: var(--primary-base);
+    }
 
-@media (min-width:1000px) {
-    .main-layout {
-        grid-template-columns:
-            minmax(20px, 1fr) minmax(auto, 980px) minmax(20px, 1fr);
+    .main-header .nav-bar a:active {
+        box-shadow: inset 0 -6px 0 var(--primary-base);
+        color: var(--primary-base);
+        cursor: default;
+    }
+
+    .editor {
+        justify-content: space-around;
+        align-items: center;
+    }
+    .main-footer {
+        height: 180px;
+        background-color: var(--secondary-1);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    
+    }
+    .btn-toggle-menu{
+        display: none;
     }
 }
+
+
+
+    @media (min-width:1000px) {
+        .main-layout {
+            grid-template-columns:
+                minmax(20px, 1fr) minmax(auto, 980px) minmax(20px, 1fr);
+        }
+
+        .btn-toggle-menu {
+            display: none;
+        }
+
+    }

@@ -1,11 +1,10 @@
 'use strict'
 
-
 function toggleMenu() {
-    document.body.classList.toggle('menu-open');
+    document.body.classList.toggle('menu-open')
 }
 
-const scrollContainer = document.querySelector('.emoji-scroll');
+const scrollContainer = document.querySelector('.emoji-scroll')
 
 document.getElementById('scroll-left').addEventListener('click', () => {
     scrollContainer.scrollBy({
