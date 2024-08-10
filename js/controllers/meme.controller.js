@@ -6,9 +6,11 @@ let gLineX = 250
 
 
 let gFontSizeDelta = 0
-let isDragging = false;
-let selectedLineIndex = -1;
-let startX, startY;
+let isDragging = false
+let selectedLineIndex = -1
+let startX
+let startY
+
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 function renderMeme() {
@@ -135,23 +137,6 @@ function onAlignLine(direction) {
     alignLine(direction)
 }
 
-function onMouseClick(ev) {
-    const { offsetX, offsetY, clientX, clientY } = ev
-    // console.log(offsetX, gMeme.lines[0].x, gMeme.lines[0].textWidth);
-
-    const clickedLine = gMeme.lines.findIndex(line => {
-        return (
-            offsetX >= line.textWidth - line.x && offsetX <= line.x + line.textWidth &&
-            offsetY >= line.y - 30 && offsetY < line.y + 30
-        )
-    })
-    if (clickedLine >= 0) {
-        selectedLineByLineClick(clickedLine)
-        drawFrame()
-        renderMeme()
-        inputFieldsDataFormUpdated()
-    }
-}
 
 function inputFieldsDataFormUpdated() {
     const selectedLineIdx = gMeme.selectedLineIdx
@@ -210,6 +195,10 @@ function onDown(ev) {
         isDragging = true
         startX = offsetX
         startY = offsetY
+        selectedLineByLineClick(selectedLineIndex)
+        drawFrame()
+        renderMeme()
+        inputFieldsDataFormUpdated()
     }
     renderMeme()
 }
@@ -260,7 +249,7 @@ function getEvPos(ev) {
     let pos = {
         x: ev.offsetX,
         y: ev.offsetY,
-    };
+    }
 
     if (TOUCH_EVS.includes(ev.type)) {
         ev.preventDefault()
@@ -268,7 +257,7 @@ function getEvPos(ev) {
         pos = {
             x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
             y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
-        };
+        }
     }
-    return pos;
+    return pos
 }

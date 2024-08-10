@@ -5,7 +5,6 @@ let gFilterBy = ''
 
 _createImgs()
 
-
 function getImgs() {
     const filterBy = gFilterBy
 
