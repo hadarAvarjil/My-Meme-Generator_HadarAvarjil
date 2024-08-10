@@ -49,18 +49,13 @@
                 <i class="fas fa-search search-icon"></i>
             </div>
             <div class="gallery-btn flex">
-            <div class="clear-search-container">
-                <button class="clear-search" onclick="onClearSearch()">Clear Search</button>
+                <div class="clear-search-container">
+                    <button class="clear-search" onclick="onClearSearch()">Clear Search</button>
+                </div>
+                <div class="flexible-container">
+                    <button class="flexible" onclick="onChooseflexible()">I'm Flexible!</button>
+                </div>
             </div>
-            <div class="flexible-container">
-                <button class="flexible" onclick="onChooseflexible()">I'm Flexible!</button>
-            </div>
-            <div class="file-input">
-                <input class="load-image" type="file" class=" load-image file-input btn" name="image" onchange="onLoadImage(event)" accept="image/*" />
-            </div>
-            </div>
-
-
         </div>
 
 
@@ -82,7 +77,8 @@
                     <input class="txt-input box-shadow" oninput="onSetLineTxt(this.value)" type="text" id="textInput"
                         name="textInput" placeholder="Add Text Here" />
 
-                    <button class="add edit-btn box-shadow" onclick="onAddLine()"><img src="img/btn/add.png" alt="add edit-btn">
+                    <button class="add edit-btn box-shadow" onclick="onAddLine()"><img src="img/btn/add.png"
+                            alt="add edit-btn">
                     </button>
 
                     <button class="trash edit-btn box-shadow" onclick="OnDeleteLine()"><img src="img/btn/trash.png"
@@ -143,7 +139,8 @@
 
                     <div class="emoji-input-container box-shadow">
                         <div class="left-side">
-                            <button class="scroll-btn left" id="scroll-left"><img class="scrolling" src="img/btn/Left.png" alt="Right">
+                            <button class="scroll-btn left" id="scroll-left"><img class="scrolling"
+                                    src="img/btn/Left.png" alt="Right">
                             </button>
                         </div>
                         <div class="emoji-scroll">
@@ -164,7 +161,8 @@
                             <span class="emoji" data-emoji="🦋" onclick="onDrawEmoji(this)">🦋</span>
                         </div>
                         <div class="right-side">
-                            <button class="scroll-btn right" id="scroll-right"><img class="scrolling" src="img/btn/Right.png" alt="Left">
+                            <button class="scroll-btn right" id="scroll-right"><img class="scrolling"
+                                    src="img/btn/Right.png" alt="Left">
                             </button>
                         </div>
                     </div>

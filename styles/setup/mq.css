@@ -37,21 +37,6 @@
         color: white;
     }
 
-    .close-menu-btn {
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 30px;
-        ;
-
-        font-size: 1.2rem;
-        padding: 10px;
-        border: none;
-        background-color: var(--primary-2);
-        color: white;
-    }
-
-
     body.menu-open .main-nav {
         transform: translateX(0);
     }
@@ -63,6 +48,12 @@
 
     .search-bar-container {
         flex-direction: column;
+    }
+    .filter-bar{
+        margin-top: 6px;
+    }
+    .search-icon{
+        margin-top: 6px;
     }
 
     .editor {
@@ -95,6 +86,7 @@
         outline: none;
         color: white;
         cursor: pointer;
+        height: 30px;
     }
 
     .clear-search:hover {
@@ -111,6 +103,7 @@
         outline: none;
         color: white;
         cursor: pointer;
+        height: 30px;
     }
 
     .flexible:hover {

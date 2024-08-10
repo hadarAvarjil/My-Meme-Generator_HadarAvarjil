@@ -18,7 +18,7 @@ let gMeme = {
             color: '#000000',
             fillColor: '#000000',
             textWidth: 325,
-            textHeight: 40,
+            textHeight: 0,
             textAlign: 'center',
             x: 0,
             y: 40,
@@ -35,6 +35,7 @@ let gLineY = 100
 function setLineData(line, axisX, textWidth) {
     gMeme.lines[line].textWidth = textWidth
     gMeme.lines[line].x = axisX
+    gMeme.lines[line].textHeight = gMeme.lines[line].size + 6
 }
 
 function addLine() {
@@ -47,6 +48,7 @@ function addLine() {
         fillColor: '#000000',
         textWidth: 0,
         textHeight: 0,
+        textAlign: 'center',
         x: 0,
         y: gLineY,
         font: 'Arial',
@@ -183,7 +185,7 @@ function saveMeme() {
                 color: '#000000',
                 fillColor: '#000000',
                 textWidth: 325,
-                textHeight: 40,
+                textHeight: 0,
                 textAlign: 'center',
                 x: 0,
                 y: 100,
@@ -212,11 +214,35 @@ function setEmoji(emoji) {
 
 
 /////////////////////////////////////////////////
-
 function isClicked(clickedPos) {
-    const { pos } = gMeme
-    //* Calc the distance between two dots
-    const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
-    //* If its smaller then the radius of the circle, we know we clicked inside the circle
-    return distance <= gCircle.size
+    
+
+   
 }
+// let gMeme = {
+//     selectedImgId: 5,
+//     selectedLineIdx: 0,
+//     LinesAddedCount: 0,
+//     savedImage: '',
+//     selectedEmojisIdx: 0,
+//     emojisAddedCount: 0,
+//     emojis: [],
+//     lines: [
+//         {
+//             txt: 'Add Text Here',
+//             size: 35,
+//             color: '#000000',
+//             fillColor: '#000000',
+//             textWidth: 325,
+//             textHeight: 40,
+//             textAlign: 'center',
+//             x: 0,
+//             y: 40,
+//             font: 'Arial',
+//             isDrag: false
+//         },
+//     ]
+// }
+// meme.emojis.forEach(emoji => {
+//     drawEmoji(emoji.emoji, emoji.posX, emoji.posY)
+// })
