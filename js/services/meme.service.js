@@ -52,7 +52,7 @@ function addLine() {
         isDrag: false
     }
     gMeme.lines.push(newLine)
-   
+
     if (gMeme.LinesAddedCount === 2) return
     gMeme.LinesAddedCount++
     gMeme.selectedLineIdx++
@@ -143,8 +143,20 @@ function deleteLine() {
 
 function alignLine(direction) {
     const line = gMeme.selectedLineIdx
-    gMeme.lines[line].textAlign = direction
-    renderMeme()
+    console.log(line);
+
+    switch (direction) {
+        case 'left':
+            gMeme.lines[line].x = 300
+            break
+        case 'center':
+            gMeme.lines[line].x = 200
+            break
+        case 'right':
+            gMeme.lines[line].x = 100
+            break
+    }
+     renderMeme()
 }
 
 function selectedLineByLineClick(clickedLine) {
