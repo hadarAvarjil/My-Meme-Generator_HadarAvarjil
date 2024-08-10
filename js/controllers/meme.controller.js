@@ -6,6 +6,9 @@ let gLineX = 250
 
 
 let gFontSizeDelta = 0
+let isDragging = false;
+let selectedLineIndex = -1;
+let startX, startY;
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 function renderMeme() {
@@ -22,7 +25,7 @@ function renderMeme() {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
 
         meme.lines.forEach((line, index) => {
-            drawText(line.txt, line.y, line.color, line.size, line.fillColor, index, line.textAlign, line.font)
+            drawText(line.txt,line.x, line.y, line.color, line.size, line.fillColor, index, line.textAlign, line.font)
         })
         meme.emojis.forEach(emoji => {
             drawEmoji(emoji.emoji, emoji.posX, emoji.posY)
@@ -30,8 +33,7 @@ function renderMeme() {
         drawFrame()
         drawEmoji()
     }
-    window.addEventListener('resize', resizeCanvas)
-    // addListeners()
+    addListeners()
 }
 
 function resizeCanvas() {
@@ -40,12 +42,11 @@ function resizeCanvas() {
     renderMeme()
 }
 
-function drawText(text, y, strokeColor, size, fillColor, selectedLine, textAlign, font) {
+function drawText(text,x, y, strokeColor, size, fillColor, selectedLine, textAlign, font) {
     const fontSize = size
     const align = textAlign
     const fontType = font
-    const axisX = gElCanvas.width / 2
-
+    const axisX = x
     const line = selectedLine
 
     gCtx.lineWidth = 1
@@ -55,8 +56,8 @@ function drawText(text, y, strokeColor, size, fillColor, selectedLine, textAlign
     gCtx.textAlign = `${align}`
     gCtx.textBaseline = 'middle'
 
-    gCtx.fillText(text, axisX, y, 400)
-    gCtx.strokeText(text, axisX, y, 400)
+    gCtx.fillText(text, x, y, 400)
+    gCtx.strokeText(text, x, y, 400)
 
     const textMetrics = gCtx.measureText(text)
     const textWidth = textMetrics.width
@@ -191,85 +192,83 @@ function drawEmoji(emoji, axisX, axisY) {
 
 }
 
-function onLoadImage(ev) {
-    loadImageFromInput(ev, renderImg)
-}
-
-////////////////// Please Ignore //////////////////
 
 function onDown(ev) {
-    const pos = getEvPos(ev)
+    const { offsetX, offsetY } = ev
 
-    if (!isClicked(pos)) return
+    selectedLineIndex = gMeme.lines.findIndex(line => {
+        const halfTextWidth = line.textWidth / 2
+        const halfTextHeight = line.size / 2
 
-    // setCircleDrag(true)
+        return (
+            offsetX >= line.x - halfTextWidth && offsetX <= line.x + halfTextWidth &&
+            offsetY >= line.y - halfTextHeight && offsetY <= line.y + halfTextHeight
+        )
+    })
 
-    //* Save the pos we start from
-    // gStartPos = pos
-    // document.body.style.cursor = 'grabbing'
+    if (selectedLineIndex >= 0) {
+        isDragging = true
+        startX = offsetX
+        startY = offsetY
+    }
+    renderMeme()
 }
 
 function onMove(ev) {
-    const { isDrag } = getCircle()
-    if (!isDrag) return
+    if (!isDragging) return
 
-    const pos = getEvPos(ev)
-    //* Calc the delta, the diff we moved
-    const dx = pos.x - gStartPos.x
-    const dy = pos.y - gStartPos.y
-    moveCircle(dx, dy)
-    //* Save the last pos so we will remember where we`ve been and move accordingly
-    gStartPos = pos
-    //* The canvas (along with the circle) is rendered again after every move
-    renderCanvas()
+    const { offsetX, offsetY } = ev
+
+    const dx = offsetX - startX
+    const dy = offsetY - startY
+
+    gMeme.lines[selectedLineIndex].x += dx
+    gMeme.lines[selectedLineIndex].y += dy
+
+    startX = offsetX
+    startY = offsetY
+
+    renderMeme()
 }
 
 function onUp() {
-    setCircleDrag(false)
-    document.body.style.cursor = 'grab'
+    isDragging = false
+    renderMeme()
 }
 
-//* Handle the listeners
 function addListeners() {
     addMouseListeners()
     addTouchListeners()
-    //* Listen for resize ev
-    window.addEventListener('resize', () => {
-        renderMeme()
-    })
+    window.addEventListener('resize', resizeCanvas)
 }
 
 function addMouseListeners() {
     gElCanvas.addEventListener('mousedown', onDown)
-    // gElCanvas.addEventListener('mousemove', onMove)
-    // gElCanvas.addEventListener('mouseup', onUp)
+    gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mouseup', onUp)
 }
 
 function addTouchListeners() {
     gElCanvas.addEventListener('touchstart', onDown)
-    // gElCanvas.addEventListener('touchmove', onMove)
-    // gElCanvas.addEventListener('touchend', onUp)
+    gElCanvas.addEventListener('touchmove', onMove)
+    gElCanvas.addEventListener('touchend', onUp)
 }
 
 
 
 function getEvPos(ev) {
-
     let pos = {
         x: ev.offsetX,
         y: ev.offsetY,
-    }
+    };
 
     if (TOUCH_EVS.includes(ev.type)) {
-        //* Prevent triggering the mouse screen dragging event
         ev.preventDefault()
-        //* Gets the first touch point
         ev = ev.changedTouches[0]
-        //* Calc the right pos according to the touch screen
         pos = {
             x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
             y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
-        }
+        };
     }
-    return pos
+    return pos;
 }

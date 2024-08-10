@@ -20,7 +20,7 @@ let gMeme = {
             textWidth: 325,
             textHeight: 0,
             textAlign: 'center',
-            x: 0,
+            x: 150,
             y: 40,
             font: 'Arial',
             isDrag: false
@@ -49,7 +49,7 @@ function addLine() {
         textWidth: 0,
         textHeight: 0,
         textAlign: 'center',
-        x: 0,
+        x: 150,
         y: gLineY,
         font: 'Arial',
         isDrag: false
@@ -213,36 +213,3 @@ function setEmoji(emoji) {
 }
 
 
-/////////////////////////////////////////////////
-function isClicked(clickedPos) {
-    
-
-   
-}
-// let gMeme = {
-//     selectedImgId: 5,
-//     selectedLineIdx: 0,
-//     LinesAddedCount: 0,
-//     savedImage: '',
-//     selectedEmojisIdx: 0,
-//     emojisAddedCount: 0,
-//     emojis: [],
-//     lines: [
-//         {
-//             txt: 'Add Text Here',
-//             size: 35,
-//             color: '#000000',
-//             fillColor: '#000000',
-//             textWidth: 325,
-//             textHeight: 40,
-//             textAlign: 'center',
-//             x: 0,
-//             y: 40,
-//             font: 'Arial',
-//             isDrag: false
-//         },
-//     ]
-// }
-// meme.emojis.forEach(emoji => {
-//     drawEmoji(emoji.emoji, emoji.posX, emoji.posY)
-// })
