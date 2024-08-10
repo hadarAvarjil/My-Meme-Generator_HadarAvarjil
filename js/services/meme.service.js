@@ -16,7 +16,7 @@ let gMeme = {
             txt: 'Add Text Here',
             size: 35,
             color: '#000000',
-            fillColor: '#000000',
+            fillColor: '#ffffff',
             textWidth: 325,
             textHeight: 0,
             textAlign: 'center',
@@ -30,11 +30,8 @@ let gMeme = {
 
 let gSavedMemes = []
 
-let gLineY = 100
-
-function setLineData(line, axisX, textWidth) {
+function setLineData(line, textWidth) {
     gMeme.lines[line].textWidth = textWidth
-    gMeme.lines[line].x = axisX
     gMeme.lines[line].textHeight = gMeme.lines[line].size + 6
 }
 
@@ -45,19 +42,17 @@ function addLine() {
         txt: 'Add Text Here',
         size: 35,
         color: '#000000',
-        fillColor: '#000000',
+        fillColor: '#ffffff',
         textWidth: 0,
         textHeight: 0,
         textAlign: 'center',
         x: 150,
-        y: gLineY,
+        y: 100,
         font: 'Arial',
         isDrag: false
     }
     gMeme.lines.push(newLine)
-    gLineY += 100
-    if (gLineY > 350) gLineY = 100
-
+   
     if (gMeme.LinesAddedCount === 2) return
     gMeme.LinesAddedCount++
     gMeme.selectedLineIdx++

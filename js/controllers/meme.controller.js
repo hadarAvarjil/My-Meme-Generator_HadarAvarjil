@@ -27,7 +27,7 @@ function renderMeme() {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
 
         meme.lines.forEach((line, index) => {
-            drawText(line.txt,line.x, line.y, line.color, line.size, line.fillColor, index, line.textAlign, line.font)
+            drawText(line.txt, line.x, line.y, line.color, line.size, line.fillColor, index, line.textAlign, line.font)
         })
         meme.emojis.forEach(emoji => {
             drawEmoji(emoji.emoji, emoji.posX, emoji.posY)
@@ -44,14 +44,13 @@ function resizeCanvas() {
     renderMeme()
 }
 
-function drawText(text,x, y, strokeColor, size, fillColor, selectedLine, textAlign, font) {
+function drawText(text, x, y, strokeColor, size, fillColor, selectedLine, textAlign, font) {
     const fontSize = size
     const align = textAlign
     const fontType = font
-    const axisX = x
     const line = selectedLine
 
-    gCtx.lineWidth = 1
+    gCtx.lineWidth = 2
     gCtx.strokeStyle = strokeColor
     gCtx.fillStyle = fillColor
     gCtx.font = `${fontSize}px ${fontType}`
@@ -64,11 +63,11 @@ function drawText(text,x, y, strokeColor, size, fillColor, selectedLine, textAli
     const textMetrics = gCtx.measureText(text)
     const textWidth = textMetrics.width
 
-    updateLineData(line, axisX, textWidth)
+    updateLineData(line, textWidth)
 }
 
-function updateLineData(line, axisX, textWidth) {
-    setLineData(line, axisX, textWidth)
+function updateLineData(line, textWidth) {
+    setLineData(line, textWidth)
 }
 function onSetLineTxt(txt) {
     setLineTxt(txt)
@@ -192,15 +191,14 @@ function onDown(ev) {
     })
 
     if (selectedLineIndex >= 0) {
-        isDragging = true
-        startX = offsetX
-        startY = offsetY
         selectedLineByLineClick(selectedLineIndex)
         drawFrame()
         renderMeme()
         inputFieldsDataFormUpdated()
+        isDragging = true
+        startX = offsetX
+        startY = offsetY
     }
-    renderMeme()
 }
 
 function onMove(ev) {
