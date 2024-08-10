@@ -177,9 +177,9 @@ function drawEmoji(emoji, axisX, axisY) {
 
 }
 
-
 function onDown(ev) {
-    const { offsetX, offsetY } = ev
+    const pos = getEvPos(ev)
+    const { x: offsetX, y: offsetY } = pos
 
     selectedLineIndex = gMeme.lines.findIndex(line => {
         const halfTextWidth = line.textWidth / 2
@@ -206,7 +206,8 @@ function onDown(ev) {
 function onMove(ev) {
     if (!isDragging) return
 
-    const { offsetX, offsetY } = ev
+    const pos = getEvPos(ev)
+    const { x: offsetX, y: offsetY } = pos
 
     const dx = offsetX - startX
     const dy = offsetY - startY
