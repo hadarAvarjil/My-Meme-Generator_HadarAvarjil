@@ -143,7 +143,6 @@ function deleteLine() {
 
 function alignLine(direction) {
     const line = gMeme.selectedLineIdx
-    console.log(line);
 
     switch (direction) {
         case 'left':
@@ -171,14 +170,9 @@ function setFontType(font) {
 
 function saveMeme() {
     gSavedMemes = loadFromStorage('memes')
-    console.log(gSavedMemes);
-    
-
     const savedMeme = JSON.parse(JSON.stringify(gMeme))
-
     const imgDataUrl = gElCanvas.toDataURL('image/jpeg')
     savedMeme.savedImage = imgDataUrl
-
     gSavedMemes.unshift(savedMeme)
 
     gMeme = {
