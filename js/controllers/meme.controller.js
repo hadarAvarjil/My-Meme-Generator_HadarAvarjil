@@ -50,7 +50,7 @@ function drawText(text, x, y, strokeColor, size, fillColor, selectedLine, textAl
     const fontType = font
     const line = selectedLine
 
-    gCtx.lineWidth = 2
+    gCtx.lineWidth = 1
     gCtx.strokeStyle = strokeColor
     gCtx.fillStyle = fillColor
     gCtx.font = `${fontSize}px ${fontType}`
@@ -114,6 +114,7 @@ function onSwitchLine() {
 }
 
 function drawFrame() {
+    if (gMeme.selectedLineIdx === -1) return
     const padding = 3
 
     let selectedLineIdx = gMeme.selectedLineIdx
@@ -198,6 +199,12 @@ function onDown(ev) {
         isDragging = true
         startX = offsetX
         startY = offsetY
+    }
+    else {
+        console.log(selectedLineIndex);
+        selectedLineByLineClick(selectedLineIndex)
+        drawFrame()
+        renderMeme()
     }
 }
 

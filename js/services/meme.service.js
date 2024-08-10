@@ -14,9 +14,9 @@ let gMeme = {
     lines: [
         {
             txt: 'Add Text Here',
-            size: 35,
+            size: 20,
             color: '#000000',
-            fillColor: '#ffffff',
+            fillColor: '#000000',
             textWidth: 325,
             textHeight: 0,
             textAlign: 'center',
@@ -40,9 +40,9 @@ function addLine() {
 
     const newLine = {
         txt: 'Add Text Here',
-        size: 35,
+        size: 20,
         color: '#000000',
-        fillColor: '#ffffff',
+        fillColor: '#000000',
         textWidth: 0,
         textHeight: 0,
         textAlign: 'center',
@@ -170,6 +170,10 @@ function setFontType(font) {
 }
 
 function saveMeme() {
+    gSavedMemes = loadFromStorage('memes')
+    console.log(gSavedMemes);
+    
+
     const savedMeme = JSON.parse(JSON.stringify(gMeme))
 
     const imgDataUrl = gElCanvas.toDataURL('image/jpeg')
@@ -188,7 +192,7 @@ function saveMeme() {
         lines: [
             {
                 txt: 'Add Text Here',
-                size: 35,
+                size: 20,
                 color: '#000000',
                 fillColor: '#000000',
                 textWidth: 325,
